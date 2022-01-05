@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTDC7L994C"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-KTDC7L994C');
+        gtag('config', 'UA-215832535-1');
+    </script>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://unpkg.com/aframe-chromakey-material/dist/aframe-chromakey-material.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.2/dist/aframe-extras.min.js"></script>
+    <script src="inflate.min.js"></script>
+    <style>
+        .overlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("backgroundWhile.PNG");
+            /* background-color:#ffffff; Black background with opacity */
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        .uimusic {
+            position: absolute;
+            z-index: 100;
+            top: 83%;
+            right: 7%;
+            width: 87%;
+            height: 12%;
+            box-sizing: border-box;
+        }
+
+        .prevent-click {
+            pointer-events: none;
+        }
+    </style>
+
+</head>
+
+<body style="margin : 0px; overflow: hidden;">
+    <a-scene embedded="true" arjs='debugUIEnabled:false; trackingMethod: best;'
+        device-orientation-permission-ui="enabled: false" vr-mode-ui="enabled: false" loading-screen="enabled:false"
+        precision: mediump>
+
+        <a-assets>
+            <img id="my-image2" src="button.png">
+            <img id="my-image">
+            <video id="vid" class="music" src="Assets/1224v2/omi_01.mp4" playsinline webkit-playsinline muted> </video>
+            <video id="vid2" class="music" src="Assets/1224v2/omi_02.mp4" playsinline webkit-playsinline muted> </video>
+            <video id="vid3" class="music" src="Assets/1224v2/omi_03.mp4" playsinline webkit-playsinline muted> </video>
+            <video id="vid4" class="music" src="Assets/1224v2/omi_04.mp4" playsinline webkit-playsinline muted> </video>
+            <video id="vid5" class="music" src="Assets/1224v2/omi_05.mp4" playsinline webkit-playsinline muted> </video>
+        </a-assets>
+
+        <a-marker type='pattern' url='pattern_211221.patt' markerhandler>
+            <a-video id="aVideoHide" src="#vid" position="0 0 0" visible="false" rotation="-90 0 0" scale="3 3 3"
+                height="3.7px" width="2.4px" material="shader: chromakey; color: 0.1 0.9 0.2"></a-video>
+            <a-video id="aVideoHide2" src="#vid2" position="0 0 0" visible="false" rotation="-90 0 0" scale="3 3 3"
+                height="3.7px" width="2.4px" material="shader: chromakey; color: 0.1 0.9 0.2"></a-video>
+            <a-video id="aVideoHide3" src="#vid3" position="0 0 0" visible="false" rotation="-90 0 0" scale="3 3 3"
+                height="3.7px" width="2.4px" material="shader: chromakey; color: 0.1 0.9 0.2"></a-video>
+            <a-video id="aVideoHide4" src="#vid4" position="0 0 0" visible="false" rotation="-90 0 0" scale="3 3 3"
+                height="3.7px" width="2.4px" material="shader: chromakey; color: 0.1 0.9 0.2"></a-video>
+            <a-video id="aVideoHide5" src="#vid5" position="0 0 0" visible="false" rotation="-90 0 0" scale="3 3 3"
+                height="3.7px" width="2.4px" material="shader: chromakey; color: 0.1 0.9 0.2"></a-video>
+            <a-entity id="thuthat" position="0 0 0" rotation=" -90 0 0" scale="1 1 1" fbx-model="src: test.fbx;"
+                visible="false" shadow="receive: true; cast: true" animation="clip:anii"></a-entity>
+            <a-entity id="thuthat1" position="0 0 0" rotation=" -90 0 0" scale="1 1 1"
+                fbx-model="src: plane_douda_tate_280cm_140cm.fbx;" visible="false" shadow="receive: true; cast: true"
+                animation="clip:anii"></a-entity>
+        </a-marker>
+
+        <a-image clickhandler src="#my-image2" id="aimage2" position="-0.006 -0.25 -0.9" visible="false" height="0.3"
+            width="0.48"> </a-image>
+        <a-image src="#my-image" id="aimage" position="-0.005 0.05 -0.95" visible="false" height="0.9" width="1">
+        </a-image>
+        <a-image src="Assets/omi_01.png" id="aimage" position="-0.005 0.05 -0.95" visible="false" height="0.9"
+            width="1">
+        </a-image>
+        <a-image src="Assets/omi_02.png" id="aimage2" position="-0.005 0.05 -0.95" visible="false" height="0.9"
+            width="1">
+        </a-image>
+        <a-image src="Assets/omi_03.png" id="aimage3" position="-0.005 0.05 -0.95" visible="false" height="0.9"
+            width="1">
+        </a-image>
+        <a-image src="Assets/omi_04.png" id="aimage4" position="-0.005 0.05 -0.95" visible="false" height="0.9"
+            width="1">
+        </a-image>
+        <a-image src="Assets/omi_05.png" id="aimage5" position="-0.005 0.05 -0.95" visible="false" height="0.9"
+            width="1">
+        </a-image>
+
+        <a-entity camera position="0 0 0"></a-entity>
+
+    </a-scene>
+    <div class="uimusic" id="containermusic"></div>
+
+    <script>
+        $('#containermusic').hide();
+        var scene = document.querySelector('#containermusic');
+        let elementsL = document.querySelectorAll("#vid, #vid2, #vid3, #vid4, #vid5");
+        let randomNum = Math.floor(Math.random() * elementsL.length);
+
+        scene.addEventListener("click", function (e) {
+            let myElvideo = document.querySelector("#aVideoHide");
+            let myElvideo2 = document.querySelector("#aVideoHide2");
+            let myElvideo3 = document.querySelector("#aVideoHide3");
+            let myElvideo4 = document.querySelector("#aVideoHide4");
+            let myElvideo5 = document.querySelector("#aVideoHide5");
+            myElvideo.setAttribute('position', '-19 -19 5');
+            myElvideo2.setAttribute('position', '-19 -19 5');
+            myElvideo3.setAttribute('position', '-19 -19 5');
+            myElvideo4.setAttribute('position', '-19 -19 5');
+            myElvideo5.setAttribute('position', '-19 -19 5');
+
+            let myEl = document.querySelector("#aimage2");
+            myEl.setAttribute("visible", "false");
+            myEl.setAttribute('position', '-15 -15 9');
+            $('#containermusic').hide();
+            scene.style.display = 'none';
+            $('#containermusic').addClass('prevent-click');
+
+            if (randomNum == 0) {
+                // sceneElement.classList.add("overlay1");				
+                let video = document.getElementById("vid");
+                video.play();
+                myElvideo.setAttribute("visible", "true");
+		myElvideo.setAttribute('position', '-19 -19 5');
+                setTimeout(function () {
+                    myElvideo.setAttribute('position', '0 0 0');
+                }, 1200);
+
+                document.getElementsByTagName("video")[0].addEventListener("ended", yourFunction, false);
+                function yourFunction(e) {
+
+                    setTimeout(function () {
+                        let sceneElement = document.querySelector("a-scene");
+                        let imageTrue1 = document.getElementsByTagName("a-image")[2];
+                        imageTrue1.setAttribute('visible', true);
+                        let video = document.getElementById("vid");
+                        video.setAttribute('position', '0 0 20');
+                        sceneElement.classList.add("overlay");
+                    }, 3000);
+                }
+            }
+            else if (randomNum == 1) {
+
+                let video2 = document.getElementById("vid2");
+                video2.play();
+                myElvideo2.setAttribute("visible", "true");
+		myElvideo2.setAttribute('position', '-19 -19 5');
+                setTimeout(function () {
+                    myElvideo2.setAttribute('position', '0 0 0');
+                }, 1200);
+
+                document.getElementsByTagName("video")[1].addEventListener("ended", yourFunction, false);
+                function yourFunction(e) {
+
+                    setTimeout(function () {
+                        let sceneElement = document.querySelector("a-scene");
+                        let imageTrue1 = document.getElementsByTagName("a-image")[3];
+                        imageTrue1.setAttribute('visible', true);
+                        let video2 = document.getElementById("vid2");
+                        video2.setAttribute('position', '0 0 20');
+                        sceneElement.classList.add("overlay");
+                    }, 3000);
+                }
+            }
+            else if (randomNum == 2) {
+                // sceneElement.classList.add("overlay2");				
+                let video3 = document.getElementById("vid3");
+                video3.play();
+                myElvideo3.setAttribute("visible", "true");
+		myElvideo3.setAttribute('position', '-19 -19 5');
+                setTimeout(function () {
+                    myElvideo3.setAttribute('position', '0 0 0');
+                }, 1200);
+
+                document.getElementsByTagName("video")[2].addEventListener("ended", yourFunction, false);
+                function yourFunction(e) {
+                    setTimeout(function () {
+                        let sceneElement = document.querySelector("a-scene");
+                        let imageTrue1 = document.getElementsByTagName("a-image")[4];
+                        imageTrue1.setAttribute('visible', true);
+                        //alert("end");
+                        let video3 = document.getElementById("vid3");
+                        video3.setAttribute('position', '0 0 20');
+                        sceneElement.classList.add("overlay");
+                    }, 3000);
+                }
+            }
+            else if (randomNum == 3) {
+                //  sceneElement.classList.add("overlay3");				
+                let video4 = document.getElementById("vid4");
+                video4.play();
+                myElvideo4.setAttribute("visible", "true");
+		myElvideo4.setAttribute('position', '-19 -19 5');
+                setTimeout(function () {
+                    myElvideo4.setAttribute('position', '0 0 0');
+                }, 1200);
+
+                document.getElementsByTagName("video")[3].addEventListener("ended", yourFunction, false);
+                function yourFunction(e) {
+
+                    setTimeout(function () {
+                        let sceneElement = document.querySelector("a-scene");
+                        let imageTrue1 = document.getElementsByTagName("a-image")[5];
+                        imageTrue1.setAttribute('visible', true);
+                        //alert("end");
+                        let video4 = document.getElementById("vid4");
+                        video4.setAttribute('position', '0 0 20');
+                        sceneElement.classList.add("overlay");
+                    }, 3000);
+                }
+            }
+            else if (randomNum == 4) {
+                // sceneElement.classList.add("overlay4");
+                let video5 = document.getElementById("vid5");
+                video5.play();
+                myElvideo5.setAttribute("visible", "true");
+		myElvideo5.setAttribute('position', '-19 -19 5');
+                setTimeout(function () {
+                    myElvideo5.setAttribute('position', '0 0 0');
+                }, 1200);
+
+                document.getElementsByTagName("video")[4].addEventListener("ended", yourFunction, false);
+                function yourFunction(e) {
+
+                    setTimeout(function () {
+                        let sceneElement = document.querySelector("a-scene");
+                        let imageTrue1 = document.getElementsByTagName("a-image")[6];
+                        imageTrue1.setAttribute('visible', true);
+                        let video5 = document.getElementById("vid5");
+                        video5.setAttribute('position', '0 0 20');
+                        sceneElement.classList.add("overlay");
+                    }, 3000);
+                }
+            }
+        });
+
+        AFRAME.registerComponent('markerhandler', {
+            tick: function () {
+                let myElvideo = document.querySelector("#aVideoHide");
+                let imageTrue = document.getElementsByTagName("a-image")[0];
+                let fbxid = document.querySelector("#thuthat");
+                let fbxid1 = document.querySelector("#thuthat1");
+                if (document.querySelector("a-marker").object3D.visible == true) {
+                    imageTrue.setAttribute('visible', true);
+                    //fbxid.setAttribute('visible', true);
+                    //fbxid1.setAttribute('visible', true);
+                    $('#containermusic').show();
+                } else if (document.querySelector("a-marker").object3D.visible == false) {
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
